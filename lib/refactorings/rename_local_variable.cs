@@ -7,6 +7,7 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
+using rfactor.lib;
 
 namespace rfactor.lib.refactorings
 {

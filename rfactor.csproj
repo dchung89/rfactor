@@ -93,11 +93,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="lib\preconditions\Helper.cs" />
+    <Compile Include="lib\ContextFactory.cs" />
     <Compile Include="lib\refactorings\create_empty_class.cs" />
     <Compile Include="lib\refactorings\create_member_variable.cs" />
     <None Include="prototypes\Rename.cs" />
     <None Include="prototypes\Renamer.cs" />
     <None Include="prototypes\RenamerChecker.cs" />
+    <Compile Include="lib\refactorings\rename_local_variable.cs" />
+    <Compile Include="RfactorController.cs" />
     <Compile Include="ui\CodeAction.cs" />
     <Compile Include="ui\CodeRefactoringProvider.cs" />
     <Compile Include="ui\RenameGuiProvider.cs" />
@@ -112,6 +115,10 @@
     <Compile Include="ui\RenameService.cs" />
     <Compile Include="ui\Renamer.cs" />
     <Compile Include="ui\WindowsFormProvider.cs" />
+    <Compile Include="unittests\ContextFactory_spec.cs" />
+    <Compile Include="unittests\stubs\ISolutionStub.cs" />
+    <Compile Include="unittests\stubs\IWorkspaceStub.cs" />
+    <Compile Include="unittests\RfactorController_spec.cs" />
     <Compile Include="unittests\refactorings\create_empty_class_spec.cs" />
     <Compile Include="unittests\RenameTests.cs" />
   </ItemGroup>

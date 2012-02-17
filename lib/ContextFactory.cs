@@ -27,4 +27,5 @@ namespace rfactor.lib
         {
             return this.iSolution;
         }
+    }
 }
