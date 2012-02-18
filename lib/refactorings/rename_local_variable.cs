@@ -11,18 +11,30 @@ using rfactor.lib;
 
 namespace rfactor.lib.refactorings
 {
-    class rename_local_variable
+    class rename_local_variable : Refactoring
     {
+
+        public rename_local_variable(Symbol symbolToRename, String newName, Context ctxFactory)
+            : base(ctxFactory)
+        {
+            this.symbolToRename = symbolToRename;
+            this.newName = newName;
+        }
+
+        Symbol symbolToRename;
+        String newName;
+
         [Import]
-        private IRenameService iRenameService;
-        public bool CheckPreconditions()
+        private IRenameService iRenameService = null;
+
+        public override bool CheckPreconditions()
         {
             throw new NotImplementedException();
         }
-        public SyntaxTree Refactor()
+        public override SyntaxTree Refactor()
         {
-            
-            throw new NotImplementedException();
+            iRenameService.RenameSymbol(ctxFactory.GetIWorkspace(),ctxFactory.GetISolution(),symbolToRename,newName);
+            return null;
         }
     }
 }

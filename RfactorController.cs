@@ -10,10 +10,11 @@ namespace rfactor
 {
     class RfactorController
     {
-        ContextFactory ctxFactory;
-        public RfactorController(IWorkspace iwork, ISolution isol)
+        RefactoringFactory refactoringFactory;
+
+        public RfactorController(IWorkspace iwork, ISolution isol, IDocument idoc = null)
         {
-            ctxFactory = new ContextFactory(iwork, isol);
+            refactoringFactory = new RefactoringFactory(new Context(iwork, isol, idoc));
         }
 
         

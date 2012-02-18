@@ -8,46 +8,42 @@ using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 using rfactor.lib;
+using rfactor.lib.refactorings;
 using rfactor.unittests.stubs;
 
 namespace rfactor.unittests
 {
 
     [TestFixture]
-    class ContextFactoryTest
+    class RefactoringFactoryTest
     {
 
-        ContextFactory ctrlr;
+        RefactoringFactory refactoringFactory;
 
         [SetUp]
         public void InitializeWithStubs()
         {
             IWorkspaceStub iworkstub = null;
             ISolutionStub isolstub = null;
+            Context ctx = null;
             try
             {
                 iworkstub = new IWorkspaceStub();
                 isolstub = new ISolutionStub();
+                ctx = new Context(iworkstub, isolstub);
             }
             catch (NotImplementedException e)
             {
             }
 
-            ctrlr = new ContextFactory(iworkstub, isolstub);
+            refactoringFactory = new RefactoringFactory(ctx);
         }
 
         [Test]
-        public void TestGetIWorkspace()
+        public void TestGetRenameLocalVariable()
         {
-            var ws = ctrlr.GetIWorkspace();
-            Assert.IsInstanceOf<IWorkspace>(ws);
-        }
-
-        [Test]
-        public void TestGetISolution()
-        {
-            var isol = ctrlr.GetISolution();
-            Assert.IsInstanceOf<ISolution>(isol);
+            var R = refactoringFactory.GetRenameLocalVariable(null, "NewName");
+            Assert.IsInstanceOf<rename_local_variable>(R);
         }
 
     }
