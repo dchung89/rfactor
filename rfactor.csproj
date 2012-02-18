@@ -44,9 +44,6 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.OLE.Interop, Version=7.1.40304.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="nunit.core">
-      <HintPath>..\..\..\TestDriven.Net-3.2.2770_beta2\NUnit\2.5\lib\nunit.core.dll</HintPath>
-    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\TestDriven.Net-3.2.2770_beta2\NUnit\2.5\framework\nunit.framework.dll</HintPath>
     </Reference>
