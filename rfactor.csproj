@@ -120,6 +120,7 @@
     <Compile Include="unittests\Context_spec.cs" />
     <Compile Include="unittests\RefactoringFactory_spec.cs" />
     <Compile Include="unittests\refactorings\rename_local_variable_spec.cs" />
+    <Compile Include="unittests\stubs\IDocumentStub.cs" />
     <Compile Include="unittests\stubs\ISolutionStub.cs" />
     <Compile Include="unittests\stubs\IWorkspaceStub.cs" />
     <Compile Include="unittests\RfactorController_spec.cs" />
