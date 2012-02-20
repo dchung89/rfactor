@@ -17,6 +17,11 @@ namespace rfactor
             refactoringFactory = new RefactoringFactory(new Context(iwork, isol, idoc));
         }
 
+        public RfactorController(Context ctx)
+        {
+            refactoringFactory = new RefactoringFactory(ctx);
+        }
+
         
     }
 }

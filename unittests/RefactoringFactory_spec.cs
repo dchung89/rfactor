@@ -40,6 +40,13 @@ namespace rfactor.unittests
         }
 
         [Test]
+        public void VerifyInitialization()
+        {
+            Assert.IsInstanceOf<RefactoringFactory>(refactoringFactory);
+            Assert.NotNull(refactoringFactory);
+        }
+
+        [Test]
         public void TestGetRenameLocalVariable()
         {
             var R = refactoringFactory.GetRenameLocalVariable(null, "NewName");
