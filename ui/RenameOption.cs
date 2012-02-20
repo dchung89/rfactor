@@ -7,16 +7,18 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {
+    [ExcludeFromCodeCoverage]
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
-    class RenameOption : 
+    class RenameOption : ICodeRefactoringProvider
     {
         private readonly ICodeActionEditFactory editFactory;
 
         [ImportingConstructor]
-        public CodeRefactoringProvider0(ICodeActionEditFactory editFactory)
+        public RenameOption(ICodeActionEditFactory editFactory)
         {
             this.editFactory = editFactory;
         }

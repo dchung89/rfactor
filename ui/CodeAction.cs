@@ -9,10 +9,12 @@ using Roslyn.Compilers.Common;
 using Roslyn.Compilers.CSharp;
 using System.Windows.Media;
 using System.Threading;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {   
     // Action for RenameServiceActionEdit
+    [ExcludeFromCodeCoverage]
     public class CodeAction0 : ICodeAction
     {
         private IWorkspace workspace;
@@ -46,6 +48,8 @@ namespace rfactor
             return new RenameServiceActionEdit(workspace, renameService, document, symbol);
         }
     }
+    [Obsolete]
+    [ExcludeFromCodeCoverage]
     // Action for Casper's Renamer
     public class CodeAction1 : ICodeAction
     {

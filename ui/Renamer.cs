@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {
@@ -13,7 +14,7 @@ namespace rfactor
     //   Renamer r = new Renamer("myVar","newVar");
     //   tree = r.Visit(tree.Root);
     //   new_text = tree.ToString();
-
+    [ExcludeFromCodeCoverage]
     class Renamer : SyntaxRewriter
     {
         string oldName, newName;

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Roslyn.Compilers.Common;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {
+    [ExcludeFromCodeCoverage]
     class WindowsFormProvider
     {
 

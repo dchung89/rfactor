@@ -6,9 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {
+    [ExcludeFromCodeCoverage]
     public partial class InputBox : Form
     {
         public InputBox()

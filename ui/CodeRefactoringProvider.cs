@@ -7,9 +7,11 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {
+    [ExcludeFromCodeCoverage]
     // Provider for the RenameServiceActionEdit
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
     class CodeRefactoringProvider0 : ICodeRefactoringProvider
@@ -53,6 +55,7 @@ namespace rfactor
                 variable.Identifier.Span);
         }
     }
+    [ExcludeFromCodeCoverage]
     // Provider that uses RenameServiceActionEdit, does use edit factory
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
     class CodeRefactoringProvider1 : ICodeRefactoringProvider
@@ -96,6 +99,7 @@ namespace rfactor
                 variable.Identifier.Span);
         }
     }
+    [ExcludeFromCodeCoverage]
     // Method Renaming
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
     class CodeRefactoringProvider2 : ICodeRefactoringProvider
@@ -139,6 +143,7 @@ namespace rfactor
                 variable.Identifier.Span);
         }
     }
+    [ExcludeFromCodeCoverage]
     // Class Renaming
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
     class CodeRefactoringProvider3 : ICodeRefactoringProvider
@@ -182,6 +187,7 @@ namespace rfactor
                 variable.Identifier.Span);
         }
     }
+    [ExcludeFromCodeCoverage]
     // Parameter Renaming
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
     class CodeRefactoringProvider4 : ICodeRefactoringProvider
@@ -225,6 +231,7 @@ namespace rfactor
                 variable.Identifier.Span);
         }
     }
+    [ExcludeFromCodeCoverage]
     // Directive Renaming
     [ExportCodeRefactoringProvider("RfactorRename", LanguageNames.CSharp)]
     class CodeRefactoringProvider5 : ICodeRefactoringProvider

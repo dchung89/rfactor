@@ -9,9 +9,11 @@ using Roslyn.Compilers.Common;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor
 {
+    [ExcludeFromCodeCoverage]
     public class RenameServiceActionEdit : ICodeActionEdit
     {
         private IWorkspace workspace;
