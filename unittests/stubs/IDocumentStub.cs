@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics.CodeAnalysis;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 
 namespace rfactor.unittests.stubs
 {
+    [ExcludeFromCodeCoverage]
     class IDocumentStub : IDocument
     {
         public string DisplayName

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor.unittests.stubs
 {
+    [ExcludeFromCodeCoverage]
     class ISolutionStub : ISolution
     {
         public ISolution AddDocument(IDocument document)

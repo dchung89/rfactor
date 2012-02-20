@@ -6,9 +6,11 @@ using Roslyn.Services.Editor;
 using Roslyn.Services;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
+using System.Diagnostics.CodeAnalysis;
 
 namespace rfactor.unittests.stubs
 {
+    [ExcludeFromCodeCoverage]
     class IWorkspaceStub : IWorkspace
     {
         public System.Threading.Tasks.Task<DocumentId> AddDocumentAsync(ProjectId project, IEnumerable<string> folders, string preferredDocumentName, IText initialText, SourceCodeKind sourceCodeKind = SourceCodeKind.Regular)
