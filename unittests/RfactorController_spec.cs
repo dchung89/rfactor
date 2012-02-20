@@ -16,8 +16,9 @@ namespace rfactor.unittests
     [TestFixture]
     class RfactorControllerTest
     {
+        RfactorController ctrlr;
 
-        [Test]
+        [SetUp]
         public void TestInitializationWithStubs()
         {
             IWorkspaceStub iworkstub = null;
@@ -31,9 +32,15 @@ namespace rfactor.unittests
             {
             }
 
-            RfactorController ctrlr = new RfactorController(iworkstub,isolstub);
+            ctrlr = new RfactorController(iworkstub,isolstub);
         }
-    
+
+        [Test]
+        public void VerifyInitialization()
+        {
+            Assert.IsInstanceOf<RfactorController>(ctrlr);
+            Assert.NotNull(ctrlr);
+        }
     }
 
 }

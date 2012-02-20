@@ -17,37 +17,56 @@ namespace rfactor.unittests
     class ContextFactoryTest
     {
 
-        Context ctrlr;
+        Context ctx;
 
         [SetUp]
         public void InitializeWithStubs()
         {
             IWorkspaceStub iworkstub = null;
             ISolutionStub isolstub = null;
+            IDocumentStub idocstub = null;
             try
             {
                 iworkstub = new IWorkspaceStub();
                 isolstub = new ISolutionStub();
+                idocstub = new IDocumentStub();
             }
             catch (NotImplementedException e)
             {
             }
 
-            ctrlr = new Context(iworkstub, isolstub);
+            ctx = new Context(iworkstub, isolstub, idocstub);
+        }
+
+        [Test]
+        public void VerifyInitialization()
+        {
+            Assert.IsInstanceOf<Context>(ctx);
+            Assert.NotNull(ctx);
         }
 
         [Test]
         public void TestGetIWorkspace()
         {
-            var ws = ctrlr.GetIWorkspace();
+            var ws = ctx.GetIWorkspace();
             Assert.IsInstanceOf<IWorkspace>(ws);
+            Assert.NotNull(ws);
         }
 
         [Test]
         public void TestGetISolution()
         {
-            var isol = ctrlr.GetISolution();
+            var isol = ctx.GetISolution();
             Assert.IsInstanceOf<ISolution>(isol);
+            Assert.NotNull(isol);
+        }
+
+        [Test]
+        public void TestGetIDocument()
+        {
+            var idoc = ctx.getIDocument();
+            Assert.IsInstanceOf<IDocument>(idoc);
+            Assert.NotNull(idoc);
         }
 
     }
