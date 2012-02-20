@@ -19,17 +19,17 @@ namespace rfactor.unittests.stubs
             get { throw new NotImplementedException(); }
         }
 
-        public Roslyn.Compilers.Common.ISemanticModel GetSemanticModel(System.Threading.CancellationToken cancellationToken = null)
+        public Roslyn.Compilers.Common.ISemanticModel GetSemanticModel(System.Threading.CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Roslyn.Compilers.Common.CommonSyntaxTree GetSyntaxTree(System.Threading.CancellationToken cancellationToken = null)
+        public Roslyn.Compilers.Common.CommonSyntaxTree GetSyntaxTree(System.Threading.CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
 
-        public Roslyn.Compilers.IText GetText(System.Threading.CancellationToken cancellationToken = null)
+        public Roslyn.Compilers.IText GetText(System.Threading.CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -39,7 +39,7 @@ namespace rfactor.unittests.stubs
             get { throw new NotImplementedException(); }
         }
 
-        public bool IsEquivalentTo(IDocument document, System.Threading.CancellationToken cancellationToken = null)
+        public bool IsEquivalentTo(IDocument document, System.Threading.CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
@@ -49,7 +49,7 @@ namespace rfactor.unittests.stubs
             get { throw new NotImplementedException(); }
         }
 
-        public bool IsTopLevelEquivalentTo(IDocument document, System.Threading.CancellationToken cancellationToken = null)
+        public bool IsTopLevelEquivalentTo(IDocument document, System.Threading.CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
