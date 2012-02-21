@@ -5,7 +5,7 @@ using System.Text;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 
-namespace rfactor.lib.refactorings
+namespace Rfactor.Lib.Refactorings
 {
     /** 
      * Define a new class, with no locally defined members. If a superclass is specified 

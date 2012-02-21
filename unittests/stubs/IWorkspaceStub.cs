@@ -8,7 +8,7 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor.unittests.stubs
+namespace Rfactor.UnitTests.Stubs
 {
     [ExcludeFromCodeCoverage]
     class IWorkspaceStub : IWorkspace

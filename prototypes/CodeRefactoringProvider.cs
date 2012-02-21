@@ -9,7 +9,7 @@ using Roslyn.Services;
 using Roslyn.Services.Editor;
 using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor
+namespace Rfactor
 {
     [ExcludeFromCodeCoverage]
     // Provider for the RenameServiceActionEdit
@@ -51,7 +51,7 @@ namespace rfactor
             var workspace = workspaceDiscoveryService.GetWorkspace(document.GetText().Container);
 
             return new CodeRefactoring(
-                new[] { new CodeAction0(workspace, renameService, document, symbol) },
+                new[] { new RenameAction(workspace, renameService, document, symbol) },
                 variable.Identifier.Span);
         }
     }
@@ -95,7 +95,7 @@ namespace rfactor
             var workspace = workspaceDiscoveryService.GetWorkspace(document.GetText().Container);
 
             return new CodeRefactoring(
-                new[] { new CodeAction1(editFactory, workspace, renameService, document, symbol) },
+                new[] { new RenamerAction(editFactory, workspace, renameService, document, symbol) },
                 variable.Identifier.Span);
         }
     }
@@ -139,7 +139,7 @@ namespace rfactor
             var workspace = workspaceDiscoveryService.GetWorkspace(document.GetText().Container);
 
             return new CodeRefactoring(
-                new[] { new CodeAction0(workspace, renameService, document, symbol) },
+                new[] { new RenameAction(workspace, renameService, document, symbol) },
                 variable.Identifier.Span);
         }
     }
@@ -183,7 +183,7 @@ namespace rfactor
             var workspace = workspaceDiscoveryService.GetWorkspace(document.GetText().Container);
 
             return new CodeRefactoring(
-                new[] { new CodeAction0(workspace, renameService, document, symbol) },
+                new[] { new RenameAction(workspace, renameService, document, symbol) },
                 variable.Identifier.Span);
         }
     }
@@ -227,7 +227,7 @@ namespace rfactor
             var workspace = workspaceDiscoveryService.GetWorkspace(document.GetText().Container);
 
             return new CodeRefactoring(
-                new[] { new CodeAction0(workspace, renameService, document, symbol) },
+                new[] { new RenameAction(workspace, renameService, document, symbol) },
                 variable.Identifier.Span);
         }
     }
@@ -271,7 +271,7 @@ namespace rfactor
             var workspace = workspaceDiscoveryService.GetWorkspace(document.GetText().Container);
 
             return new CodeRefactoring(
-                new[] { new CodeAction0(workspace, renameService, document, symbol) },
+                new[] { new RenameAction(workspace, renameService, document, symbol) },
                 variable.DirectiveNameToken.Span);
         }
     }

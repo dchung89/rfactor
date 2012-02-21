@@ -5,9 +5,9 @@ using System.Text;
 using NUnit.Framework;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
-using rfactor.lib.refactorings;
+using Rfactor.Lib.Refactorings;
 
-namespace rfactor.unittests.refactorings
+namespace Rfactor.UnitTests.refactorings
 {
     [TestFixture]
     class rename_local_variable_spec

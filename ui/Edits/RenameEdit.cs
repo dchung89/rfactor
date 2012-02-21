@@ -11,17 +11,19 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor
+namespace Rfactor
 {
+    // Calls the back-end for the refactoring
+    // edit and apply the changes.
     [ExcludeFromCodeCoverage]
-    public class RenameServiceActionEdit : ICodeActionEdit
+    public class RenameEdit : ICodeActionEdit
     {
         private IWorkspace workspace;
         private IRenameService renameService;
         private IDocument document;
         private ISymbol symbol;
 
-        public RenameServiceActionEdit(IWorkspace workspace, IRenameService renameService,
+        public RenameEdit(IWorkspace workspace, IRenameService renameService,
             IDocument document, ISymbol symbol)
         {
             this.workspace = workspace;
@@ -35,8 +37,8 @@ namespace rfactor
         {
             // This function will be called when the user actually clicks to apply the code action.
             // Perform the rename here.
-            GuiProvider gui = new GuiProvider(symbol.Name.ToString());
-            bool cancelRename = gui.GetGUI();
+            RenameGui gui = new RenameGui(symbol.Name.ToString());
+            bool cancelRename = gui.GetGui();
 
             if (cancelRename)
             {

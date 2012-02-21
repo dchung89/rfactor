@@ -8,7 +8,7 @@
     <ProjectGuid>{1BB0C45B-D011-475C-BEE0-75AAFE3ACABC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>rfactor</RootNamespace>
+    <RootNamespace>Rfactor</RootNamespace>
     <AssemblyName>RfactorRename</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <GeneratePkgDefFile>false</GeneratePkgDefFile>
@@ -92,53 +92,59 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="lib\Helper.cs" />
-    <Compile Include="lib\Context.cs" />
-    <Compile Include="lib\Refactoring.cs" />
-    <Compile Include="lib\RefactoringFactory.cs" />
-    <Compile Include="lib\refactorings\create_empty_class.cs" />
-    <Compile Include="lib\refactorings\create_member_variable.cs" />
-    <None Include="prototypes\Rename.cs" />
-    <None Include="prototypes\Renamer.cs" />
-    <None Include="prototypes\RenamerChecker.cs" />
-    <Compile Include="lib\refactorings\rename_local_variable.cs" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Lib\Helper.cs" />
+    <Compile Include="Lib\Context.cs" />
+    <Compile Include="Lib\Refactoring.cs" />
+    <Compile Include="Lib\RefactoringFactory.cs" />
+    <Compile Include="Lib\Refactorings\create_empty_class.cs" />
+    <Compile Include="Lib\Refactorings\create_member_variable.cs" />
+    <None Include="Prototypes\Rename.cs" />
+    <None Include="Prototypes\Renamer.cs" />
+    <None Include="Prototypes\RenamerChecker.cs" />
+    <Compile Include="Lib\Refactorings\rename_local_variable.cs" />
     <Compile Include="RfactorController.cs" />
-    <Compile Include="ui\CodeAction.cs" />
-    <Compile Include="ui\CodeRefactoringProvider.cs" />
-    <Compile Include="ui\RenameGuiProvider.cs" />
-    <Compile Include="ui\InputBox.cs">
+    <Compile Include="UI\Actions\RenameAction.cs" />
+    <None Include="Prototypes\CodeRefactoringProvider.cs" />
+    <Compile Include="UI\Refactorings\RenameClass.cs" />
+    <Compile Include="UI\Refactorings\RenameField.cs" />
+    <Compile Include="UI\Refactorings\RenameMethod.cs" />
+    <Compile Include="UI\Refactorings\RenameParameter.cs" />
+    <Compile Include="UI\Refactorings\RenameProperty.cs" />
+    <Compile Include="UI\RenameGui.cs" />
+    <Compile Include="UI\InputBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ui\InputBox.Designer.cs">
+    <Compile Include="UI\InputBox.Designer.cs">
       <DependentUpon>InputBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="ui\RenameOption.cs" />
-    <Compile Include="ui\RenameService.cs" />
-    <Compile Include="ui\Renamer.cs" />
-    <Compile Include="ui\WindowsFormProvider.cs" />
-    <Compile Include="unittests\Context_spec.cs" />
-    <Compile Include="unittests\RefactoringFactory_spec.cs" />
-    <Compile Include="unittests\refactorings\rename_local_variable_spec.cs" />
-    <Compile Include="unittests\stubs\IDocumentStub.cs" />
-    <Compile Include="unittests\stubs\ISolutionStub.cs" />
-    <Compile Include="unittests\stubs\IWorkspaceStub.cs" />
-    <Compile Include="unittests\RfactorController_spec.cs" />
-    <Compile Include="unittests\refactorings\create_empty_class_spec.cs" />
-    <None Include="prototypes\RenameTests.cs" />
+    <Compile Include="UI\Refactorings\RenameVariable.cs" />
+    <Compile Include="UI\Edits\RenameEdit.cs" />
+    <None Include="Prototypes\OldRenamer.cs" />
+    <None Include="Prototypes\RenamerAction.cs" />
+    <Compile Include="UnitTests\Context_spec.cs" />
+    <Compile Include="UnitTests\RefactoringFactory_spec.cs" />
+    <Compile Include="UnitTests\Refactorings\rename_local_variable_spec.cs" />
+    <Compile Include="UnitTests\Stubs\IDocumentStub.cs" />
+    <Compile Include="UnitTests\Stubs\ISolutionStub.cs" />
+    <Compile Include="UnitTests\Stubs\IWorkspaceStub.cs" />
+    <Compile Include="UnitTests\RfactorController_spec.cs" />
+    <Compile Include="UnitTests\Refactorings\create_empty_class_spec.cs" />
+    <None Include="Prototypes\RenameTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ui\source.extension.vsixmanifest">
+    <None Include="UI\source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ui\InputBox.resx">
+    <EmbeddedResource Include="UI\InputBox.resx">
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lib\preconditions\" />
+    <Folder Include="Lib\Preconditions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />

@@ -6,9 +6,9 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
-using rfactor.lib.refactorings;
+using Rfactor.Lib.Refactorings;
 
-namespace rfactor.lib
+namespace Rfactor.Lib
 {
     // Summary:
     //     The RefactoringFactory is responsible for maintaining a list of and making available all rfactor refactorings. 
