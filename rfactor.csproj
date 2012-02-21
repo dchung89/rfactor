@@ -92,7 +92,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
     <None Include="Lib\Helper.cs" />
     <Compile Include="Lib\Context.cs" />
     <Compile Include="Lib\Refactoring.cs" />
