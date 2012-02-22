@@ -10,7 +10,7 @@ using Roslyn.Services;
 using Roslyn.Services.Editor;
 using rfactor.lib.refactorings;
 
-namespace rfactor.unittests.refactorings
+namespace Rfactor.UnitTests.refactorings
 {
     [TestFixture]
     class rename_local_variable_spec

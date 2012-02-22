@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using rfactor.lib;
+using Rfactor.Lib;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 
-namespace rfactor
+namespace Rfactor
 {
     class RfactorController
     {

@@ -7,10 +7,10 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
-using rfactor.lib;
-using rfactor.unittests.stubs;
+using Rfactor.Lib;
+using Rfactor.UnitTests.Stubs;
 
-namespace rfactor.unittests
+namespace Rfactor.UnitTests
 {
 
     [TestFixture]

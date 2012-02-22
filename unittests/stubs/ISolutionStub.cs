@@ -6,7 +6,7 @@ using Roslyn.Services;
 using Roslyn.Services.Editor;
 using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor.unittests.stubs
+namespace Rfactor.UnitTests.Stubs
 {
     [ExcludeFromCodeCoverage]
     class ISolutionStub : ISolution

@@ -6,7 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 
-namespace rfactor.unittests.stubs
+namespace Rfactor.UnitTests.Stubs
 {
     [ExcludeFromCodeCoverage]
     class IDocumentStub : IDocument

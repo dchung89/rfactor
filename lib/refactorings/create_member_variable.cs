@@ -5,7 +5,7 @@ using System.Text;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 
-namespace rfactor.lib.refactorings
+namespace Rfactor.Lib.Refactorings
 {
     /** 
      * Add an unreferenced locally dened member variable to a class

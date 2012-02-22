@@ -5,7 +5,7 @@ using System.Text;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 
-namespace rfactor.lib
+namespace Rfactor.Lib
 {
     class Context
     {

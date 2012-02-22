@@ -5,9 +5,15 @@ using System.Text;
 using NUnit.Framework;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
+<<<<<<< HEAD
+using Roslyn.Services;
+using Roslyn.Services.Editor;
+using Rfactor.Lib.Refactorings;
+=======
 using rfactor.lib.refactorings;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
+>>>>>>> gui_dev
 
 namespace rfactor
 {
@@ -23,7 +29,7 @@ namespace rfactor
         public void test()
         {
             // I added the SampleApp solution in the testingfiles folder
-            workspace = Workspace.LoadSolution(@"../../testingfiles/SampleApplication.sln");
+            workspace = Workspace.LoadSolution(@"../../TestFiles/SampleApplication.sln");
             solution = workspace.CurrentSolution;
 
             Assert.IsNotNull(solution);

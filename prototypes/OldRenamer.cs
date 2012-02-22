@@ -6,7 +6,7 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor
+namespace Rfactor
 {
 
     // Example Usage: 

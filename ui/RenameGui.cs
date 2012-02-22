@@ -11,25 +11,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor
+namespace Rfactor
 {
+    // Gets all necessary GUI components
+    // for the Rename refactoring.
     [ExcludeFromCodeCoverage]
-    public class GuiProvider
+    public class RenameGui
     {
         private string name;
         public string Name
         {
             get { return name; }
         }
-        public GuiProvider(string name)
+        public RenameGui(string name)
         {
             this.name = name;
         }
 
-        public bool GetGUI()
+        public bool GetGui()
         {
             bool cancelAction = true;
-            using (InputBox inputBox = new InputBox())
+            using (RenameForm inputBox = new RenameForm())
             {
                 inputBox.ShowDialog();
                 Control[] controls = inputBox.Controls.Find("buttonOk", false);
