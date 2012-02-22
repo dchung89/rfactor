@@ -1,6 +1,6 @@
-﻿namespace rfactor
+﻿namespace Rfactor
 {
-    partial class InputBox
+    partial class RenameForm
     {
         /// <summary>
         /// Required designer variable.

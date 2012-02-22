@@ -7,7 +7,7 @@ using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 
-namespace rfactor.lib
+namespace Rfactor.Lib
 {
     // Summary:
     //     Abstract class representing a single Refactoring. It is responsible for maintaining a reference to a Context object, 

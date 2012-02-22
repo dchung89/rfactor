@@ -7,9 +7,9 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
-using rfactor.lib;
+using Rfactor.Lib;
 
-namespace rfactor.lib.refactorings
+namespace Rfactor.Lib.Refactorings
 {
     class rename_local_variable : Refactoring
     {

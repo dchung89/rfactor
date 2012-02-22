@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics.CodeAnalysis;
 
-namespace rfactor
+namespace Rfactor
 {
-    public partial class InputBox : Form
+    [ExcludeFromCodeCoverage]
+    public partial class RenameForm : Form
     {
-        public InputBox()
+        public RenameForm()
         {
             InitializeComponent();
         }
