@@ -21,7 +21,6 @@ namespace rfactor
         {
             refactoringFactory = new RefactoringFactory(ctx);
         }
-
-        
+                
     }
 }
