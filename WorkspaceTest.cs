@@ -5,17 +5,11 @@ using System.Text;
 using NUnit.Framework;
 using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
-<<<<<<< HEAD
 using Roslyn.Services;
 using Roslyn.Services.Editor;
 using Rfactor.Lib.Refactorings;
-=======
-using rfactor.lib.refactorings;
-using Roslyn.Services;
-using Roslyn.Services.Editor;
->>>>>>> gui_dev
 
-namespace rfactor
+namespace Rfactor
 {
     [TestFixture]
     class WorkspaceTest
@@ -28,7 +22,7 @@ namespace rfactor
         [Test]
         public void test()
         {
-            // I added the SampleApp solution in the testingfiles folder
+            // I added the SampleApp solution in the TestFiles folder
             workspace = Workspace.LoadSolution(@"../../TestFiles/SampleApplication.sln");
             solution = workspace.CurrentSolution;
 
@@ -55,7 +49,7 @@ namespace rfactor
             // Get Program.cs
             DocumentId id = this.project.DocumentIds.ElementAt<DocumentId>(1);
 
-            System.IO.File.WriteAllText(@"../../testingfiles/SampleApplication.txt", id.FileName);
+            System.IO.File.WriteAllText(@"../../TestFiles/SampleApplication.txt", id.FileName);
 
             this.document = this.project.GetDocument(id);
 
@@ -81,7 +75,7 @@ namespace rfactor
                 }));
 
                 // Write the results to file
-                System.IO.File.WriteAllText(@"../../testingfiles/Program.txt", tree2.ToString());
+                System.IO.File.WriteAllText(@"../../TestFiles/Program.txt", tree2.ToString());
             }
             // End of Rename
         }

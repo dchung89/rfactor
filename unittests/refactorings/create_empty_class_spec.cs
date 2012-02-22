@@ -7,7 +7,7 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Rfactor.Lib.Refactorings;
 
-namespace Rfactor.UnitTests.refactorings
+namespace Rfactor.UnitTests.Refactorings
 {
     [TestFixture]
     class create_empty_class_spec

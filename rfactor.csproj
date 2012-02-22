@@ -107,7 +107,7 @@
     <Compile Include="UI\Actions\RenameAction.cs" />
     <None Include="Prototypes\CodeRefactoringProvider.cs" />
     <Compile Include="UI\Refactorings\RenameClass.cs" />
-    <Compile Include="UI\Refactorings\RenameField.cs" />
+    <None Include="Prototypes\RenameField.cs" />
     <Compile Include="UI\Refactorings\RenameMethod.cs" />
     <Compile Include="UI\Refactorings\RenameParameter.cs" />
     <Compile Include="UI\Refactorings\RenameProperty.cs" />
