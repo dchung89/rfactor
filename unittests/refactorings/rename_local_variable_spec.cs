@@ -8,9 +8,9 @@ using Roslyn.Compilers;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
-using rfactor.lib.refactorings;
+using Rfactor.Lib.Refactorings;
 
-namespace Rfactor.UnitTests.refactorings
+namespace Rfactor.UnitTests.Refactorings
 {
     [TestFixture]
     class rename_local_variable_spec
@@ -40,7 +40,7 @@ namespace Rfactor.UnitTests.refactorings
 
         private NamedTypeSymbol FindSymbol(NamedTypeSymbol type)
         {
-
+            return null;
         }
 
     }

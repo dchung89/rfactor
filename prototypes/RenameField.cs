@@ -54,7 +54,7 @@ namespace Rfactor.UI.Refactorings
 
             return new CodeRefactoring(
                 new[] { new RenameAction(workspace, renameService, document, symbol) },
-                variable.Span);
+                variable.Declaration.Span);
         }
     }
 }
