@@ -45,7 +45,33 @@ namespace Rfactor.Lib
         //    Helper functions
         /* ------------------------------------------------------ */
 
+        // Summary:
+        //     Returns the results of a recursive search for members
+        //     that can be referenced from source-code 
+        //     throughout the entire project, including references. 
+        // 
+        //     Note: See GetAssemblySymbolTable() for only the symbols
+        //           contained within the source-code. 
+        //
         protected IEnumerable<Symbol> GetFullSymbolTable()
+        {
+            NamespaceSymbol globalNamespace = (NamespaceSymbol)compilation.GlobalNamespace;
+
+            List<Symbol> list = new List<Symbol>();
+            RecursiveStep(list, globalNamespace);
+
+            return list;
+        }
+
+
+        // Summary:
+        //     Returns the results of a recursive search for members
+        //     that can be referenced from source-code 
+        //     throughout the local project. This does NOT include references. 
+        // 
+        //     Note: See GetFullSymbolTable() for a full listing of symbols. 
+        //
+        protected IEnumerable<Symbol> GetAssemblySymbolTable()
         {
             NamespaceSymbol globalNamespace = (NamespaceSymbol)compilation.Assembly.GlobalNamespace;
 
@@ -55,7 +81,8 @@ namespace Rfactor.Lib
             return list;
         }
 
-        protected void RecursiveStep(List<Symbol> agg, NamespaceSymbol namespaceSymbol)
+        // 
+        private void RecursiveStep(List<Symbol> agg, NamespaceSymbol namespaceSymbol)
         {
             foreach (var mem in namespaceSymbol.GetTypeMembers())
             {
@@ -67,7 +94,8 @@ namespace Rfactor.Lib
             }
         }
 
-        protected void RecursiveStep(List<Symbol> agg, NamedTypeSymbol typeSymbol)
+        // 
+        private void RecursiveStep(List<Symbol> agg, NamedTypeSymbol typeSymbol)
         {
             // Add all low-level members to the list
             foreach (var mem in typeSymbol.GetMembers())
@@ -82,19 +110,37 @@ namespace Rfactor.Lib
             }
         }
 
+
         /* ------------------------------------*/
         /* Opdyke Stuff */
         /* ------------------------------------*/
 
-        // 4.3.4-1 (Casper)
+        // Author: Casper
+        // Summary: Returns a list of all of the declared functions
+        // Opdyke (4.3.4-1)
+        // 
         public IEnumerable<Symbol> allFunctions()
         {
             IEnumerable<Symbol> list = GetFullSymbolTable();
             return list.Where((sym) =>
                 {
-                    if (sym.Kind == SymbolKind.Method)
-                        return true;
-                    return false;
+                    return sym.Kind == SymbolKind.Method;
+                });
+        }
+
+        // Author: Casper
+        // Summary: Returns a list of all of the declared variables
+        // Opdyke (4.3.4-2)
+        // 
+        public IEnumerable<Symbol> allVariables()
+        {
+            IEnumerable<Symbol> list = GetFullSymbolTable();
+            return list.Where((sym) =>
+                {
+                    bool flag = false;
+                    flag = flag || sym.Kind == SymbolKind.Field;
+                    flag = flag || sym.Kind == SymbolKind.Property;
+                    return flag;
                 });
         }
     }

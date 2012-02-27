@@ -81,6 +81,20 @@ namespace Rfactor.UnitTests
         public void TestAllFunctions()
         {
             var a = ctx.allFunctions();
+            Assert.True(a.Any( (val) =>
+                {
+                    return val.Name == "Rename";
+                }));
+        }
+
+        [Test]
+        public void TestAllVariables()
+        {
+            var a = ctx.allVariables();
+            Assert.True(a.Any( (val) =>
+                {
+                    return val.Name == "message";
+                }));
         }
     }
 
