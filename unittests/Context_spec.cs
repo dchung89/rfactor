@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using Roslyn.Compilers;
+using Roslyn.Compilers.Common;
 using Roslyn.Compilers.CSharp;
 using Roslyn.Services;
 using Roslyn.Services.Editor;
@@ -20,6 +21,14 @@ namespace Rfactor.UnitTests
         Context ctx;
 
         [SetUp]
+        public void InitializeWithSampleApp()
+        {
+            IWorkspace workspace = Workspace.LoadSolution(@"../../TestFiles/SampleApplication.sln");
+            ISolution solution = workspace.CurrentSolution;
+            ctx = new Context(workspace, solution);
+        }
+
+        /*[Test]
         public void InitializeWithStubs()
         {
             IWorkspaceStub iworkstub = null;
@@ -36,7 +45,7 @@ namespace Rfactor.UnitTests
             }
 
             ctx = new Context(iworkstub, isolstub, idocstub);
-        }
+        }*/
 
         [Test]
         public void VerifyInitialization()
@@ -62,13 +71,17 @@ namespace Rfactor.UnitTests
         }
 
         [Test]
-        public void TestGetIDocument()
+        public void TestGetNullIDocument()
         {
             var idoc = ctx.getIDocument();
-            Assert.IsInstanceOf<IDocument>(idoc);
-            Assert.NotNull(idoc);
+            Assert.Null(idoc);
         }
 
+        [Test]
+        public void TestAllFunctions()
+        {
+            var a = ctx.allFunctions();
+        }
     }
 
 }

@@ -89,7 +89,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WorkspaceTest.cs" />
+    <Compile Include="UnitTests\WorkspaceTest.cs" />
     <None Include="Lib\Helper.cs" />
     <Compile Include="Lib\Context.cs" />
     <Compile Include="Lib\Refactoring.cs" />

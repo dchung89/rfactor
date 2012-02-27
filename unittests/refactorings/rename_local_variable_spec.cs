@@ -23,7 +23,7 @@ namespace Rfactor.UnitTests.Refactorings
         [SetUp]
         public void GetContext()
         {
-            workspace = Workspace.LoadSolution(@"../../testingfiles/SampleApplication.sln");
+            workspace = Workspace.LoadSolution(@"../../TestFiles/SampleApplication.sln");
             solution = workspace.CurrentSolution;
             project = solution.Projects.First();
 
