@@ -96,6 +96,13 @@ namespace Rfactor.UnitTests
                     return val.Name == "message";
                 }));
         }
+
+        [Test]
+        public void TestVarNameCollisionP()
+        {
+            Assert.True(ctx.varNameCollisionP("message"));
+            Assert.False(ctx.varNameCollisionP("thisVariableDoesNotExist"));
+        }
     }
 
 }

@@ -111,9 +111,40 @@ namespace Rfactor.Lib
         }
 
 
-        /* ------------------------------------*/
-        /* Opdyke Stuff */
-        /* ------------------------------------*/
+        /* ---------------------------------------------------------------- */
+        /* ------------------Section 4.3.3--------------------------------- */
+        /* ---------------------------------------------------------------- */
+
+        // Author: Casper
+        // Summary: Checks to see whether creating a new source-referencable 
+        //          symbol with a given name would conflict with a pre-
+        //          existing one. 
+        // Opdyke (4.3.3-7)
+        //
+        public bool varNameCollisionP(string S, Symbol scope)
+        {
+            IEnumerable<Symbol> list = GetAssemblySymbolTable();
+            
+            // Check the entire symbol table for a potential collision
+            list = list.Where((val) =>
+                {
+                    return val.Name == S;
+                });
+            if (list.Count() == 0)
+                return false;
+
+            // Check the potential collisions for similar scope
+            list = list.Where((val) =>
+                {
+                    return true;
+                });
+            return true;
+        }
+
+
+        /* ---------------------------------------------------------------- */
+        /* -------------------Section 4.3.4-------------------------------- */
+        /* ---------------------------------------------------------------- */
 
         // Author: Casper
         // Summary: Returns a list of all of the declared functions
@@ -143,5 +174,7 @@ namespace Rfactor.Lib
                     return flag;
                 });
         }
+
+        
     }
 }
