@@ -100,9 +100,16 @@ namespace Rfactor.UnitTests
         [Test]
         public void TestVarNameCollisionP()
         {
-            Assert.True(ctx.varNameCollisionP("message"));
-            Assert.False(ctx.varNameCollisionP("thisVariableDoesNotExist"));
+            var allF = ctx.allTypes();
+            allF = allF.Where((val) =>
+                {
+                    return val.Name == "Program";
+                });
+            var scope = allF.Single();
+            Assert.True(ctx.varNameCollisionP("message",scope));
+            Assert.False(ctx.varNameCollisionP("thisVariableDoesNotExist",scope));
         }
+        
     }
 
 }

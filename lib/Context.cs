@@ -86,6 +86,7 @@ namespace Rfactor.Lib
         {
             foreach (var mem in namespaceSymbol.GetTypeMembers())
             {
+                agg.Add(mem);
                 RecursiveStep(agg,mem);
             }
             foreach (var mem in namespaceSymbol.GetNamespaceMembers())
@@ -110,6 +111,23 @@ namespace Rfactor.Lib
             }
         }
 
+        // Summary:
+        //     This method takes two symbols sym and scope, and starting
+        //     from sym, works its way outwards comparing containing symbols. 
+        //     If any symbols along the way 
+        //     are equal to scope, the method returns true. Else: false.
+        //
+        private bool CheckScopesOutward(Symbol sym, Symbol scope)
+        {
+            if (sym == null)
+                return false; // no matching symbol found
+
+            if (sym == scope)
+                return true; // match found
+            else
+                return CheckScopesOutward(sym.ContainingSymbol, scope);
+        }
+
 
         /* ---------------------------------------------------------------- */
         /* ------------------Section 4.3.3--------------------------------- */
@@ -119,6 +137,8 @@ namespace Rfactor.Lib
         // Summary: Checks to see whether creating a new source-referencable 
         //          symbol with a given name would conflict with a pre-
         //          existing one. 
+        //              true: there was a collision
+        //             false: there wasn't a collision
         // Opdyke (4.3.3-7)
         //
         public bool varNameCollisionP(string S, Symbol scope)
@@ -131,14 +151,17 @@ namespace Rfactor.Lib
                     return val.Name == S;
                 });
             if (list.Count() == 0)
-                return false;
+                return false; // entire symbol table contains no collisions
 
             // Check the potential collisions for similar scope
             list = list.Where((val) =>
                 {
-                    return true;
+                    return CheckScopesOutward(val, scope);
                 });
-            return true;
+
+            if (list.Count() > 0)
+                return true;
+            return false;
         }
 
 
@@ -165,12 +188,28 @@ namespace Rfactor.Lib
         // 
         public IEnumerable<Symbol> allVariables()
         {
-            IEnumerable<Symbol> list = GetFullSymbolTable();
+            IEnumerable<Symbol> list = GetAssemblySymbolTable();
             return list.Where((sym) =>
                 {
                     bool flag = false;
                     flag = flag || sym.Kind == SymbolKind.Field;
                     flag = flag || sym.Kind == SymbolKind.Property;
+                    return flag;
+                });
+        }
+
+        // Author: Casper
+        // Summary: Returns a list of all of the declared Classes
+        // 
+        public IEnumerable<Symbol> allTypes()
+        {
+            IEnumerable<Symbol> list = GetAssemblySymbolTable();
+            return list.Where((sym) =>
+                {
+                    bool flag = false;
+                    flag = flag || sym.Kind == SymbolKind.NamedType;
+                    flag = flag || sym.Kind == SymbolKind.DynamicType;
+                    // There are other types, maybe they should be included.
                     return flag;
                 });
         }
