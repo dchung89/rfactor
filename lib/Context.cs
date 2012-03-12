@@ -84,9 +84,10 @@ namespace Rfactor.Lib
         // 
         private void RecursiveStep(List<Symbol> agg, NamespaceSymbol namespaceSymbol)
         {
+            foreach (var mem in namespaceSymbol.GetMembers())
+                agg.Add(mem);
             foreach (var mem in namespaceSymbol.GetTypeMembers())
             {
-                agg.Add(mem);
                 RecursiveStep(agg,mem);
             }
             foreach (var mem in namespaceSymbol.GetNamespaceMembers())
@@ -98,18 +99,33 @@ namespace Rfactor.Lib
         // 
         private void RecursiveStep(List<Symbol> agg, NamedTypeSymbol typeSymbol)
         {
+
             // Add all low-level members to the list
             foreach (var mem in typeSymbol.GetMembers())
-            {
-                if (mem.CanBeReferencedByName)
-                    agg.Add(mem);
-            }
+                agg.Add(mem);
+
             // Step into nested types
             foreach (var mem in typeSymbol.GetTypeMembers())
             {
                 RecursiveStep(agg, mem);
             }
+
+            /*foreach (MethodSymbol mem in typeSymbol.GetMembers().Where((val) =>
+                {
+                    return val.Kind == SymbolKind.Method;
+                }))
+            {
+                var tree = mem.Locations.Single().SourceTree;
+                SemanticModel sem = (SemanticModel)compilation.GetSemanticModel(tree);
+                foreach (var node in tree.Root.DescendentNodes().OfType<LocalDeclarationStatementSyntax>())
+                {
+                    sem.LookupSymbols(
+                    agg.Add(bla);
+                }
+            }*/
+
         }
+
 
         // Summary:
         //     This method takes two symbols sym and scope, and starting
@@ -141,6 +157,9 @@ namespace Rfactor.Lib
         //             false: there wasn't a collision
         // Opdyke (4.3.3-7)
         //
+        // Future Work: Verify that a symbol in a parent scope actually
+        //              propagates down (protected, public)
+        //     
         public bool varNameCollisionP(string S, Symbol scope)
         {
             IEnumerable<Symbol> list = GetAssemblySymbolTable();
@@ -156,7 +175,21 @@ namespace Rfactor.Lib
             // Check the potential collisions for similar scope
             list = list.Where((val) =>
                 {
-                    return CheckScopesOutward(val, scope);
+                    if (CheckScopesOutward(val, scope))
+                    {
+                        // Check if this is the original def.
+                        // Assumption: definitions are not inherited
+                        if (val.IsDefinition)
+                            return true;
+
+                        // Check if the original definition is private
+                        if (val.OriginalDefinition.DeclaredAccessibility == Roslyn.Compilers.CSharp.Accessibility.Private)
+                            return false;
+
+                        // Else, assume conflict
+                        return true;
+                    }
+                    return false;
                 });
 
             if (list.Count() > 0)
@@ -175,7 +208,7 @@ namespace Rfactor.Lib
         // 
         public IEnumerable<Symbol> allFunctions()
         {
-            IEnumerable<Symbol> list = GetFullSymbolTable();
+            IEnumerable<Symbol> list = GetAssemblySymbolTable();
             return list.Where((sym) =>
                 {
                     return sym.Kind == SymbolKind.Method;
@@ -191,10 +224,11 @@ namespace Rfactor.Lib
             IEnumerable<Symbol> list = GetAssemblySymbolTable();
             return list.Where((sym) =>
                 {
-                    bool flag = false;
-                    flag = flag || sym.Kind == SymbolKind.Field;
-                    flag = flag || sym.Kind == SymbolKind.Property;
-                    return flag;
+                    //bool flag = false;
+                    //flag = flag || sym.Kind == SymbolKind.Local;
+                    //flag = flag || sym.Kind == SymbolKind.Field;
+                    //flag = flag || sym.Kind == SymbolKind.Property;
+                    return true; 
                 });
         }
 

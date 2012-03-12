@@ -98,18 +98,31 @@ namespace Rfactor.UnitTests
         }
 
         [Test]
-        public void TestVarNameCollisionP()
+        public void TestVarNameCollisionP_ClassProgramScope()
         {
-            var allF = ctx.allTypes();
-            allF = allF.Where((val) =>
+            var allT = ctx.allTypes();
+            allT = allT.Where((val) =>
                 {
                     return val.Name == "Program";
                 });
-            var scope = allF.Single();
-            Assert.True(ctx.varNameCollisionP("message",scope));
-            Assert.False(ctx.varNameCollisionP("thisVariableDoesNotExist",scope));
+            var program_scope = allT.Single();
+            Assert.True(ctx.varNameCollisionP("message",program_scope));
+            Assert.False(ctx.varNameCollisionP("thisVariableDoesNotExist",program_scope));
         }
-        
+
+        [Test]
+        public void TestVarNameCollisionP_MethodRenameScope()
+        {
+            var allF = ctx.allFunctions();
+            allF = allF.Where((val) =>
+                {
+                    return val.Name == "Rename";
+                });
+            var rename_scope = allF.Single();
+            Assert.True(ctx.varNameCollisionP("Message",rename_scope));
+            Assert.False(ctx.varNameCollisionP("thisVariableDoesNotExist",rename_scope));
+        }
+
     }
 
 }
