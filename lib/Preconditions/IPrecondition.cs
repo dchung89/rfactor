@@ -7,7 +7,7 @@ namespace Rfactor.Lib.Preconditions
 {
     interface IPrecondition
     {
-        abstract IPreconditionResult Check();
+        IPreconditionResult Check();
 
     }
 }

@@ -7,5 +7,6 @@ namespace Rfactor.Lib.Preconditions
 {
     interface IPreconditionResult
     {
+        bool VerifySuccess();
     }
 }

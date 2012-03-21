@@ -89,6 +89,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Lib\Preconditions\IPrecondition.cs" />
+    <Compile Include="Lib\Preconditions\IPreconditionResult.cs" />
+    <Compile Include="Lib\Preconditions\LocalNameConflict.cs" />
+    <Compile Include="Lib\Preconditions\LocalNameConflictResult.cs" />
+    <Compile Include="Lib\Renamer.cs" />
+    <Compile Include="UnitTests\Preconditions\LocalNameConflict_spec.cs" />
     <Compile Include="UnitTests\WorkspaceTest.cs" />
     <None Include="Lib\Helper.cs" />
     <Compile Include="Lib\Context.cs" />
@@ -140,9 +146,7 @@
       <DependentUpon>InputBox.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Lib\Preconditions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\VSSDK\Microsoft.VsSDK.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

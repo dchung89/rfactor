@@ -28,5 +28,12 @@ namespace Rfactor.Lib.Preconditions
         {
             ((List<SyntaxToken>)conflicts).Add(token);
         }
+
+        public bool VerifySuccess()
+        {
+            if (this.conflicts.Count() == 0)
+                return true;
+            return false;
+        }
     }
 }
