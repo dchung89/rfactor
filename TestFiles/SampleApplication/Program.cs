@@ -29,6 +29,7 @@ namespace SampleApplication
         public string Rename(string message)
         {
             string Message = message.ToUpper();
+            string Message234;
             return Message;
         }
 
