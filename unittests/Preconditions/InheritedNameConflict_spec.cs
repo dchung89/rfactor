@@ -16,9 +16,9 @@ namespace Rfactor.UnitTests
 {
 
     [TestFixture]
-    class LocalNameConflictTest
+    class InheritedNameConflictTest
     {
-        LocalNameConflict lnc;
+        InheritedNameConflict inc;
         IDocument document;
 
         [SetUp]
@@ -36,8 +36,8 @@ namespace Rfactor.UnitTests
             {
                 return token.GetText() == "message";
             });
-            lnc = new LocalNameConflict("message", bla.FirstOrDefault(), document);
-            IPreconditionResult res = lnc.Check();
+            inc = new InheritedNameConflict("message", bla.FirstOrDefault(), document);
+            IPreconditionResult res = inc.Check();
             Assert.False(res.VerifySuccess());
         }
 
@@ -48,8 +48,8 @@ namespace Rfactor.UnitTests
             {
                 return token.GetText() == "Message234";
             });
-            lnc = new LocalNameConflict("Message234", bla.FirstOrDefault(), document);
-            IPreconditionResult res = lnc.Check();
+            inc = new InheritedNameConflict("Message234", bla.FirstOrDefault(), document);
+            IPreconditionResult res = inc.Check();
             Assert.False(res.VerifySuccess());
         }
 
@@ -60,8 +60,8 @@ namespace Rfactor.UnitTests
             {
                 return token.GetText() == "Message234";
             });
-            lnc = new LocalNameConflict("Message23456", bla.FirstOrDefault(), document);
-            IPreconditionResult res = lnc.Check();
+            inc = new InheritedNameConflict("Message23456", bla.FirstOrDefault(), document);
+            IPreconditionResult res = inc.Check();
             Assert.True(res.VerifySuccess());
         }
 
@@ -72,11 +72,34 @@ namespace Rfactor.UnitTests
             {
                 return token.GetText() == "message";
             });
-            lnc = new LocalNameConflict("idontexist", bla.FirstOrDefault(), document);
-            IPreconditionResult res = lnc.Check();
+            inc = new InheritedNameConflict("idontexist", bla.FirstOrDefault(), document);
+            IPreconditionResult res = inc.Check();
             Assert.True(res.VerifySuccess());
         }
 
+        [Test]
+        public void TestSuccessWithInheritedMember()
+        {
+            var bla = document.GetSyntaxTree().Root.DescendentNodesAndTokens().Where((token) =>
+            {
+                return token.GetText() == "bsdf";
+            });
+            inc = new InheritedNameConflict("csdf", bla.FirstOrDefault(), document);
+            IPreconditionResult res = inc.Check();
+            Assert.True(res.VerifySuccess());
+        }
+
+        [Test]
+        public void TestConflictWithInheritedMember()
+        {
+            var bla = document.GetSyntaxTree().Root.DescendentNodesAndTokens().Where((token) =>
+            {
+                return token.GetText() == "bsdf";
+            });
+            inc = new InheritedNameConflict("asdf", bla.FirstOrDefault(), document);
+            IPreconditionResult res = inc.Check();
+            Assert.False(res.VerifySuccess());
+        }
     }
 
 }

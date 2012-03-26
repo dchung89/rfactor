@@ -31,7 +31,7 @@ namespace Rfactor.Lib
         public IEnumerable<IPrecondition> GetPreconditions()
         {
             List<IPrecondition> list = new List<IPrecondition>();
-            list.Add(new LocalNameConflict(newName, selected, (SyntaxTree)doc.GetSyntaxTree()));
+            list.Add(new LocalNameConflict(newName, selected, doc));
             return list;
         }
         
