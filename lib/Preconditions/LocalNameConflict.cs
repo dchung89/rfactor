@@ -16,11 +16,11 @@ namespace Rfactor.Lib.Preconditions
         SyntaxTree tree;
         CommonSyntaxNodeOrToken selected;
 
-        public LocalNameConflict(String name, CommonSyntaxNodeOrToken selected, SyntaxTree tree)
+        public LocalNameConflict(String name, CommonSyntaxNodeOrToken selected, IDocument doc)
         {
             this.name = name;
             this.selected = selected;
-            this.tree = tree;
+            this.tree = (SyntaxTree)doc.GetSyntaxTree();
         }
 
         public IPreconditionResult Check()
@@ -34,16 +34,15 @@ namespace Rfactor.Lib.Preconditions
             IEnumerable<SyntaxToken> list = GetAllTokensWithNameInTree(name, tree);
             // If the list is empty, there is no local conflict
             if (list.Count() == 0)
-                return new LocalNameConflictResult(list);
+                return new GenericResult(Result.Success);
             // If it isn't, run through the potential conflicts
-            LocalNameConflictResult res = new LocalNameConflictResult();
             foreach (SyntaxToken token in list)
             {
                 var parent = GetContainingNodeOfInterest(token);
                 if (parent == GetContainingNodeOfInterest((SyntaxNodeOrToken)selected))
-                    res.AddConflict(token);
+                    return new GenericResult(Result.LocalConflict);
             }
-            return res;
+            return new GenericResult(Result.Success);
         }
 
         public SyntaxNode GetContainingNodeOfInterest(SyntaxNodeOrToken nodeOrToken)
@@ -53,6 +52,19 @@ namespace Rfactor.Lib.Preconditions
                 || nodeOrToken == null)
                 return (SyntaxNode)nodeOrToken;
             return GetContainingNodeOfInterest(nodeOrToken.Parent);
+        }
+
+        public SyntaxNode GetContainingClass(SyntaxNodeOrToken nodeOrToken)
+        {
+            if (nodeOrToken.Kind == SyntaxKind.ClassDeclaration
+                || nodeOrToken == null)
+                return GetContainingNodeOfInterest(nodeOrToken);
+            return GetContainingClass(nodeOrToken);
+        }
+
+        public bool Inherits(ClassDeclarationSyntax nodeOrToken)
+        {
+            return false;
         }
 
         public IEnumerable<SyntaxToken> GetAllTokensWithNameInTree(String name, SyntaxTree tree)

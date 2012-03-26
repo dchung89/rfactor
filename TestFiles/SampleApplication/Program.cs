@@ -39,5 +39,15 @@ namespace SampleApplication
             Program prog = new Program(greeting);
             prog.Rename(greeting);
         }
+
+	class ClassA
+	{
+	    protected bool asdf;
+	}
+
+	class ClassB : ClassA
+	{
+            bool bsdf;
+	}
     }
 }
