@@ -36,11 +36,13 @@ namespace Rfactor.Lib.Preconditions
                     return sym.Name == name;
                 });
 
+            Symbol selected_sym = sem.GetDeclaredSymbol((SyntaxNode)selected);
+
             // Where is the symbol definition?
             foreach (Symbol s in syms)
             {
                 // Note: This might not allow for different methods to have same names. 
-                if (s.OriginalDefinition.ContainingSymbol == s.ContainingSymbol)
+                if (s.OriginalDefinition.ContainingSymbol == selected_sym.ContainingSymbol)
                 {
                     return new GenericResult(Result.LocalConflict);
                 }
