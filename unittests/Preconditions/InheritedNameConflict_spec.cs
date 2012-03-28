@@ -39,6 +39,7 @@ namespace Rfactor.UnitTests
             inc = new InheritedNameConflict("message", bla.FirstOrDefault(), document);
             IPreconditionResult res = inc.Check();
             Assert.False(res.VerifySuccess());
+            Assert.AreEqual(Result.LocalConflict,res.GetResult());
         }
 
         [Test]
@@ -51,6 +52,7 @@ namespace Rfactor.UnitTests
             inc = new InheritedNameConflict("Message234", bla.FirstOrDefault(), document);
             IPreconditionResult res = inc.Check();
             Assert.False(res.VerifySuccess());
+            Assert.AreEqual(Result.LocalConflict, res.GetResult());
         }
 
         [Test]
@@ -75,6 +77,7 @@ namespace Rfactor.UnitTests
             inc = new InheritedNameConflict("idontexist", bla.FirstOrDefault(), document);
             IPreconditionResult res = inc.Check();
             Assert.True(res.VerifySuccess());
+            Assert.AreEqual(Result.Success, res.GetResult());
         }
 
         [Test]
@@ -87,6 +90,7 @@ namespace Rfactor.UnitTests
             inc = new InheritedNameConflict("csdf", bla.FirstOrDefault(), document);
             IPreconditionResult res = inc.Check();
             Assert.True(res.VerifySuccess());
+            Assert.AreEqual(Result.Success, res.GetResult());
         }
 
         [Test]
@@ -99,6 +103,7 @@ namespace Rfactor.UnitTests
             inc = new InheritedNameConflict("asdf", bla.FirstOrDefault(), document);
             IPreconditionResult res = inc.Check();
             Assert.False(res.VerifySuccess());
+            Assert.AreEqual(Result.InheritedConflict, res.GetResult());
         }
     }
 
